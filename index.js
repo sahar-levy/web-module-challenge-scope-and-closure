@@ -97,7 +97,7 @@ function finalScore(inningCB, innings){
   let awayScore = 0;
   for (let i = 0; i < innings; i ++){
     homeScore = homeScore + inningCB();
-    homeScore = homeScore + inningCB();
+    awayScore = awayScore + inningCB();
   }
   return {
     homeTeam: homeScore,
@@ -120,11 +120,13 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
-
+function getInningScore(inningCB) {
+  return {
+    Home: inning(),
+    Away: inning()
+  }
 }
-
+console.log('Task 4:', getInningScore(inning));
 
 /* STRETCH: ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
