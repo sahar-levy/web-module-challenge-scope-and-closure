@@ -75,7 +75,7 @@ function inning(){
 }
 console.log('Task 2:', inning());
 
-// parentheses first - Math.floor(3) rounds down to 2, then multiplies by Math.random(). Lastly, the products is rounded down via Math.floor().
+// parentheses first - Math.random() generates random float between 0-1 (1 exluded), Math.floor(3) rounds down to 2, then multiplies by Math.random(). Lastly, the products is rounded down via Math.floor().
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -92,9 +92,19 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*Code Here*/){
-  /*Code Here*/
+function finalScore(inningCB, innings){
+  let homeScore = 0;
+  let awayScore = 0;
+  for (let i = 0; i < innings; i ++){
+    homeScore = homeScore + inningCB();
+    homeScore = homeScore + inningCB();
+  }
+  return {
+    homeTeam: homeScore,
+    awayTeam: awayScore 
+  }
 }
+console.log('Task 3:', finalScore(inning, 9));
 
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
