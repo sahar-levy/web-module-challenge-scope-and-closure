@@ -100,8 +100,8 @@ function finalScore(inningCB, innings){
     awayScore = awayScore + inningCB();
   }
   return {
-    homeTeam: homeScore,
-    awayTeam: awayScore 
+    Home: homeScore,
+    Away: awayScore 
   }
 }
 console.log('Task 3:', finalScore(inning, 9));
@@ -168,10 +168,29 @@ Use the scoreboard function below to do the following:
   "This game will require extra innings: Away 10 - Home 10"
 ] */
 // NOTE: There is no test associated with this code; if your output matches the given example, consider it complete!
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
 
+function scoreboard(inningScoreCB, inningCB, inningsPlayed) {
+
+  const scoreByInning = [];
+  let homeScore = 0;
+  let awayScore = 0;
+
+  for (let i = 0; i < inningsPlayed; i ++){
+    const currentInning = inningScoreCB(inningCB); 
+    homeScore = homeScore + currentInning.Home;   // assigns score to the Home team
+    awayScore = awayScore + currentInning.Away;   // assigns score to the Away team
+    scoreByInning.push(`Inning ${i + 1}: Away ${currentInning.Away} - Home ${currentInning.Home}`);
+  }
+
+  if (homeScore === awayScore){
+    scoreByInning.push(`This game will require extra innings: Away ${awayScore} - Home ${homeScore}`);
+  } else {
+    scoreByInning.push(`Final score: Away ${awayScore} - Home ${homeScore}`);
+  }
+
+  return scoreByInning;
+}
+console.log('Stretch:', scoreboard(getInningScore, inning, 9));
 
 
 
